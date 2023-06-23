@@ -39,7 +39,8 @@ jobs:
       run: npm test
   
   deploy:
-    needs: ubuntu-latest
+    needs: [lint, test]
+    runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v3
