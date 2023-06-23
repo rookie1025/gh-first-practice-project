@@ -1,5 +1,7 @@
 name: issues
-on: [issues]
+on:
+  issues:
+    types: [opened, edited, closed]
 jobs:
   list_event:
     runs-on: ubuntu-latest
