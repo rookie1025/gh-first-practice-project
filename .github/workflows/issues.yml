@@ -1,4 +1,4 @@
-name: deploy
+name: issues
 on: [issues]
 jobs:
   list_event:
