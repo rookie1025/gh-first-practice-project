@@ -7,18 +7,11 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
 
-    - name: setup nodejs
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-
     - name: install dependency
       run: npm ci
 
     - name: lint run
-      uses: wearerequired/lint-action@v2
-      with:
-        eslint: true
+      run: npm lint
         
   test:
     needs: lint
@@ -27,11 +20,6 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
 
-    - name: setup nodejs
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-
     - name: install dependency
       run: npm ci
 
@@ -39,16 +27,11 @@ jobs:
       run: npm test
   
   deploy:
-    needs: [lint, test]
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v3
-
-    - name: setup nodejs
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
 
     - name: install dependency
       run: npm ci
